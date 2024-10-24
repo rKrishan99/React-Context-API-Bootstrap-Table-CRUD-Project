@@ -43,45 +43,53 @@ const Users = () => {
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    updateUser(currentId, currentName, currentAge );
+    updateUser(currentId, currentName, currentAge);
+    setCurrentId(null);
+    setCurrentName(null);
+    setCurrentAge(null);
+    setName(null);
+    setAge(null);
     setUpdate(false);
+
+    nameRef.current.value = "";
+    ageRef.current.value = "";
   };
 
   return (
     <Container>
-      <h1 className="text-center">React.js Context API CRUD</h1>
+      <h1 className="text-center mt-5 fw-bold">React.js Context API CRUD</h1>
 
       {update ? (
         <Form onSubmit={handleUpdate}>
-        <Form.Group>
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            onChange={(e) => setCurrentName(e.target.value)}
-            ref={nameRef}
-            type="text"
-            value={currentName}
-            placeholder="Enter Name"
-            required
-          />
+          <Form.Group>
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              onChange={(e) => setCurrentName(e.target.value)}
+              ref={nameRef}
+              type="text"
+              value={currentName}
+              placeholder="Enter Name"
+              required
+            />
 
-          <Form.Label>Age</Form.Label>
-          <Form.Control
-            onChange={(e) => setCurrentAge(e.target.value)}
-            ref={ageRef}
-            type="number"
-            value={currentAge}
-            placeholder="Enter Age"
-            required
-          />
-        </Form.Group>
-        <br />
-        <Button type="submit">Update User</Button>
-      </Form>
+            <Form.Label>Age</Form.Label>
+            <Form.Control
+              onChange={(e) => setCurrentAge(e.target.value)}
+              ref={ageRef}
+              type="number"
+              value={currentAge}
+              placeholder="Enter Age"
+              required
+            />
+          </Form.Group>
+          <br />
+          <Button type="submit">Update User</Button>
+        </Form>
       ) : (
         <div>
           <Form onSubmit={handleSubmit}>
             <Form.Group>
-              <Form.Label>Name</Form.Label>
+              <Form.Label className="mt-3">Name</Form.Label>
               <Form.Control
                 onChange={(e) => setName(e.target.value)}
                 ref={nameRef}
@@ -90,7 +98,7 @@ const Users = () => {
                 required
               />
 
-              <Form.Label>Age</Form.Label>
+              <Form.Label className="mt-3">Age</Form.Label>
               <Form.Control
                 onChange={(e) => setAge(e.target.value)}
                 ref={ageRef}
@@ -102,7 +110,7 @@ const Users = () => {
             <br />
             <Button type="submit">Add User</Button>
           </Form>
-          <Table className="" striped bordered hover>
+          <Table className="mt-5" striped bordered hover>
             <thead>
               <tr>
                 <th>Name</th>
