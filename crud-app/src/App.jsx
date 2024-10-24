@@ -1,12 +1,14 @@
+import { UserProvider } from "./context/UserContext"
+import Users from "./user/Users"
 
 
 
 function App() {
 
   return (
-    <>
-      <button type="button" class="btn">Base class</button>
-    </>
+    <UserProvider>
+      <Users/>
+    </UserProvider>
   )
 }
 
